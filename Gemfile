@@ -66,8 +66,6 @@ if File.exist?(database_file)
       case adapter
       when 'mysql2'
         gem "mysql2", "~> 0.5.0", :platforms => [:mri, :mingw, :x64_mingw]
-      when /postgresql/
-        gem "pg", "~> 1.2.2", :platforms => [:mri, :mingw, :x64_mingw]
       when /sqlite3/
         gem "sqlite3", "~> 1.4.0", :platforms => [:mri, :mingw, :x64_mingw]
       when /sqlserver/
@@ -89,6 +87,9 @@ group :development do
   gem "yard"
 end
 
+group :production do
+  gem 'pg'
+end
 
 group :test do
   gem "rails-dom-testing"
